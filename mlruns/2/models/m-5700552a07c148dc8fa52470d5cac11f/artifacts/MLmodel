@@ -1,0 +1,38 @@
+artifact_path: file:///F:/Tools/Code/VSfiles/Cinematch/mlruns/2/models/m-5700552a07c148dc8fa52470d5cac11f/artifacts
+flavors:
+  python_function:
+    artifacts:
+      item_lookup:
+        path: artifacts\item_lookup.csv
+        uri: models/item_lookup.csv
+      sim_matrix:
+        path: artifacts\sim_matrix.joblib
+        uri: models/sim_matrix.joblib
+    cloudpickle_version: 3.1.2
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.14
+    streamable: false
+is_signature_from_type_hint: false
+mlflow_version: 3.10.0
+model_id: m-5700552a07c148dc8fa52470d5cac11f
+model_size_bytes: 22688104
+model_uuid: m-5700552a07c148dc8fa52470d5cac11f
+prompts: null
+run_id: dc5eade47c304d6fb5164a4610e4258d
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "string", "name": "title", "required": true}, {"type": "long",
+    "name": "top_k", "required": true}]'
+  outputs: '[{"type": "array", "items": {"type": "string"}, "required": true}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-02-27 15:28:46.683032'

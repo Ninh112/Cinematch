@@ -1,0 +1,18 @@
+{
+  "dataframe_split": {
+    "columns": [
+      "title",
+      "top_k"
+    ],
+    "data": [
+      [
+        "Toy Story",
+        5
+      ],
+      [
+        "Jumanji",
+        5
+      ]
+    ]
+  }
+}
