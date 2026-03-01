@@ -67,14 +67,10 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
-
+# during development, allow all origins to avoid CORS issues
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,          
+    allow_origins=["*"],          
     allow_credentials=True,
     allow_methods=["*"],            
     allow_headers=["*"],
@@ -87,6 +83,7 @@ def health():
 
 @app.post("/recommend", response_model=RecommendResponse)
 def recommend(req: RecommendRequest):
+    print(f"[API] /recommend called with {req}")
     model = app.state.model
     
     input_df = pd.DataFrame(
@@ -94,10 +91,16 @@ def recommend(req: RecommendRequest):
             {"title": req.title, "top_k": req.top_k}
         ]
     )
-    preds = model.predict(input_df)
+    try:
+        preds = model.predict(input_df)
+    except Exception as e:
+        print(f"[API] model prediction error: {e}")
+        raise
     recommendations = preds[0] if len(preds) > 0 else []
     
-    return RecommendResponse(
+    resp = RecommendResponse(
         title=req.title,
         recommendations=recommendations,
     )
+    print(f"[API] returning {resp}")
+    return resp

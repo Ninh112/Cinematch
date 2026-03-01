@@ -16,6 +16,7 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("[App] handleSubmit", {title, topK, API_URL});
     setError(null);
 
     if (!title.trim()) {
